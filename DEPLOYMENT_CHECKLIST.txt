@@ -1,0 +1,76 @@
+SNOWSOUNDS.NET - DEPLOYMENT CHECKLIST
+======================================
+
+□ STEP 1: CREATE GITHUB REPOSITORY
+   □ Go to github.com and log in
+   □ Click "New" repository (green button)
+   □ Name it "snowsounds" (or whatever you prefer)
+   □ Make it PUBLIC
+   □ Check "Add a README file"
+   □ Click "Create repository"
+
+□ STEP 2: UPLOAD WEBSITE FILES
+   □ In your new repository, click "Add file" → "Upload files"
+   □ Drag and drop these 3 files:
+      □ index.html
+      □ style.css
+      □ CNAME
+   □ Add commit message: "Initial splash page"
+   □ Click "Commit changes"
+
+□ STEP 3: ENABLE GITHUB PAGES
+   □ Click "Settings" tab in your repository
+   □ Click "Pages" in left sidebar
+   □ Under "Source", select "main" branch
+   □ Select "/ (root)" folder
+   □ Click "Save"
+   □ Note the URL that appears (will be live in 1-2 minutes)
+
+□ STEP 4: CONFIGURE NAMECHEAP DNS
+   □ Log into Namecheap.com
+   □ Go to "Domain List" → Click "Manage" next to snowsounds.net
+   □ Click "Advanced DNS" tab
+   □ Delete any existing A or CNAME records for @ and www hosts
+   □ Add 4 A Records:
+      Type: A Record, Host: @, Value: 185.199.108.153, TTL: Automatic
+      Type: A Record, Host: @, Value: 185.199.109.153, TTL: Automatic
+      Type: A Record, Host: @, Value: 185.199.110.153, TTL: Automatic
+      Type: A Record, Host: @, Value: 185.199.111.153, TTL: Automatic
+   □ Add 1 CNAME Record:
+      Type: CNAME, Host: www, Value: [yourgithubusername].github.io., TTL: Automatic
+      (Replace [yourgithubusername] with your actual GitHub username)
+   □ Click green checkmark to save each record
+
+□ STEP 5: CONNECT DOMAIN IN GITHUB
+   □ Back in GitHub: Settings → Pages
+   □ Under "Custom domain", type: snowsounds.net
+   □ Click "Save"
+   □ Wait for DNS check (can take 10 minutes)
+   □ Once DNS check passes, enable "Enforce HTTPS"
+
+□ STEP 6: WAIT FOR DNS PROPAGATION
+   □ Wait 15 minutes to 1 hour (rarely longer)
+   □ Visit snowsounds.net in your browser
+   □ Refresh if needed
+
+□ STEP 7: CUSTOMIZE YOUR SITE
+   □ Open index.html and update:
+      □ Your email address (line 34)
+      □ Your bio text (lines 24-28)
+      □ Your social links (lines 43-47)
+   □ Upload updated index.html to GitHub
+   □ Wait 1-2 minutes and refresh snowsounds.net
+
+DONE! Your site is live!
+
+TROUBLESHOOTING:
+- If site shows 404: Wait longer, DNS can take time
+- If HTTPS won't enable: DNS may not be fully propagated yet
+- If page looks broken: Check that style.css uploaded correctly
+- If domain doesn't work but .github.io does: Check Namecheap DNS settings
+
+WHAT TO REMEMBER:
+✓ Your GitHub username is important for DNS
+✓ The CNAME file tells GitHub your custom domain
+✓ Changes take 1-2 minutes to appear
+✓ Keep your repository PUBLIC for GitHub Pages to work
